@@ -8,7 +8,7 @@ trigger:
 
 pool:
   name: Default
-  demands: Agent.Name -equals Zangetsu
+  demands: Agent.Name -equals ZANGETSU
 
 steps:
 - task: Maven@3
