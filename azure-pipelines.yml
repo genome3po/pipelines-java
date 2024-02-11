@@ -32,7 +32,17 @@ pool:
   demands: Agent.Name -equals ZANGETSU
   vmImage: $(imageName)
 
+variables:
+  imageName: 'pipelines-javascript-docker'
+
 steps:
+- task: Docker@2
+  displayName: Build an image
+  inputs:
+    repository: $(imageName)
+    command: build
+    Dockerfile: app/Dockerfile
+    
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
