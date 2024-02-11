@@ -7,8 +7,9 @@ trigger:
 - main
 
 pool:
-  name: Default
-  demands: Agent.Name -equals ZANGETSU
+  vmImage: "windows-latest"
+  # name: Default
+  # demands: Agent.Name -equals ZANGETSU
 
 steps:
 - task: Maven@3
@@ -21,3 +22,10 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
+    
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: "JaCoCo"
+    summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/site/jacoco/jacoco.xml"
+    reportDirectory: "$(System.DefaultWorkingDirectory)/**/site/jacoco"
+    failIfCoverageEmpty: true
