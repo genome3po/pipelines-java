@@ -7,9 +7,9 @@ trigger:
 - main
 
 pool:
+  name: Default
+  demands: Agent.Name -equals ZANGETSU
   vmImage: "windows-latest"
-  # name: Default
-  # demands: Agent.Name -equals ZANGETSU
 
 steps:
 - task: Maven@3
