@@ -6,10 +6,20 @@
 trigger:
 - main
 
+strategy:
+  matrix:
+    linux:
+      imageName: "ubuntu-latest"
+    mac:
+      imageName: "macOS-latest"
+    windows:
+      imageName: "windows-latest"
+  maxParallel: 3
+
 pool:
   name: Default
   demands: Agent.Name -equals ZANGETSU
-  vmImage: "windows-latest"
+  vmImage: $(imageName)
 
 steps:
 - task: Maven@3
