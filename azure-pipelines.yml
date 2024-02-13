@@ -29,7 +29,7 @@ strategy:
 
 pool:
   name: Default
-  demands: Agent.Name -equals ZANGETSU
+  demands: Agent.Name -equals Jeprox
   vmImage: $(imageName)
 
 variables:
